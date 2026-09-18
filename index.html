@@ -651,6 +651,19 @@
                 <div class="module-docs">25 términos</div>
             </div>
 
+            <!-- Trazabilidad de Señales -->
+            <div class="module-card" onclick="openTrazabilidadModal()">
+                <div class="module-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 3v18h18V3H3z"/>
+                        <path d="M7 7h10M7 12h10M7 17h5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+                <h4>Trazabilidad de Señales</h4>
+                <p>Monitoreo y análisis de tráfico de datos.</p>
+                <div class="module-docs">3 herramientas</div>
+            </div>
+
             <!-- Documentación Siemens -->
             <div class="module-card" onclick="openDocumentacionModal()">
                 <div class="module-icon">
@@ -667,6 +680,135 @@
             </div>
         </div>
     </section>
+
+    <!-- TRAZABILIDAD DE SEÑALES MODAL -->
+    <div id="trazabilidadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Trazabilidad de Señales - Monitoreo y Análisis</h2>
+                <button class="close-modal" onclick="closeTrazabilidadModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Cómo Acceder -->
+                <div style="margin-bottom: 40px;">
+                    <h3 class="subcategory-title">Cómo Acceder</h3>
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">Acceso a Herramientas de Trazabilidad</h4>
+                        <p style="color: #666; line-height: 1.6;">Para acceder a las herramientas de trazabilidad de señales y monitoreo de tráfico de datos, sigue estos pasos:</p>
+                        
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Requisitos Previos</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Acceso de Red:</strong> Conexión a la red corporativa o VPN activa</li>
+                            <li><strong>Permisos:</strong> Credenciales de usuario con permisos de lectura/escritura</li>
+                            <li><strong>Software:</strong> Herramientas compatibles instaladas (Wireshark, CFE Tools)</li>
+                            <li><strong>Conocimiento:</strong> Familiaridad básica con protocolos de comunicación</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Pasos de Acceso</h4>
+                        <ol style="color: #666; line-height: 1.8;">
+                            <li><strong>Conecta a la Red:</strong> Asegúrate de tener conexión activa a la red del centro de control</li>
+                            <li><strong>Autentica:</strong> Inicia sesión con tus credenciales corporativas</li>
+                            <li><strong>Abre la Herramienta:</strong> Ejecuta Wireshark o CFE Tools desde el escritorio remoto</li>
+                            <li><strong>Configura Filtros:</strong> Define los protocolos y dispositivos a monitorear (DNP3, IEC 104)</li>
+                            <li><strong>Captura Datos:</strong> Inicia la captura de paquetes y eventos</li>
+                            <li><strong>Analiza Resultados:</strong> Revisa los logs y estadísticas generadas</li>
+                        </ol>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Seguridad</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Usa VPN para conexiones remotas</li>
+                            <li>No compartas credenciales</li>
+                            <li>Cierra sesión después de cada uso</li>
+                            <li>Respeta políticas de confidencialidad</li>
+                            <li>Documenta actividades de monitoreo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Wireshark -->
+                <div style="margin-bottom: 40px;">
+                    <h3 class="subcategory-title">Wireshark</h3>
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">¿Qué es Wireshark?</h4>
+                        <p style="color: #666; line-height: 1.6;">Wireshark es un analizador de protocolo de red de código abierto que captura y muestra en tiempo real el tráfico de datos en una red. Permite inspeccionar cientos de protocolos, incluyendo los utilizados en sistemas SCADA.</p>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Características Principales</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Captura en vivo de paquetes de datos</li>
+                            <li>Análisis profundo de protocolos (DNP3, IEC 104, Modbus, TCP/IP)</li>
+                            <li>Filtrado avanzado de tráfico</li>
+                            <li>Estadísticas y gráficos en tiempo real</li>
+                            <li>Exportación de capturas y reportes</li>
+                            <li>Búsqueda y análisis de patrones</li>
+                            <li>Decodificación de payloads</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Casos de Uso en SCADA</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Diagnóstico de Problemas:</strong> Identificar fallos en comunicación entre dispositivos</li>
+                            <li><strong>Seguridad:</strong> Detectar tráfico anómalo o intentos de acceso no autorizados</li>
+                            <li><strong>Rendimiento:</strong> Analizar latencia y carga de tráfico</li>
+                            <li><strong>Validación:</strong> Verificar que los datos se transmiten correctamente</li>
+                            <li><strong>Auditoría:</strong> Registrar y documentar todas las comunicaciones</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Filtros Comunes para SCADA</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><code style="background-color: #e8f4f8; padding: 4px 8px; border-radius: 3px;">dnp3</code> - Captura solo tráfico DNP3</li>
+                            <li><code style="background-color: #e8f4f8; padding: 4px 8px; border-radius: 3px;">iec104</code> - Captura solo tráfico IEC 60870-5-104</li>
+                            <li><code style="background-color: #e8f4f8; padding: 4px 8px; border-radius: 3px;">ip.src == 192.168.1.1</code> - Filtra por IP origen</li>
+                            <li><code style="background-color: #e8f4f8; padding: 4px 8px; border-radius: 3px;">tcp.port == 20000</code> - Filtra por puerto específico</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Instalación y Descarga</h4>
+                        <p style="color: #666; line-height: 1.6;">Visita <strong>www.wireshark.org</strong> para descargar la versión compatible con tu sistema operativo (Windows, Linux, macOS). Disponible en versiones portable o instalable.</p>
+                    </div>
+                </div>
+
+                <!-- CFE Tools -->
+                <div>
+                    <h3 class="subcategory-title">CFE Tools</h3>
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">¿Qué es CFE Tools?</h4>
+                        <p style="color: #666; line-height: 1.6;">CFE Tools es un conjunto de herramientas especializado de la Comisión Federal de Electricidad (CFE) para el monitoreo, diagnóstico y administración de sistemas de control eléctrico. Proporciona funcionalidades específicas para operadores y técnicos de subestaciones.</p>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Características Principales</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Monitoreo en tiempo real de equipos en subestaciones</li>
+                            <li>Gestión de alarmas y eventos</li>
+                            <li>Análisis de históricos y tendencias</li>
+                            <li>Generación de reportes operacionales</li>
+                            <li>Integración con sistemas SCADA existentes</li>
+                            <li>Herramientas de diagnóstico de protecciones</li>
+                            <li>Comunicación con dispositivos RTU e IED</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Funcionalidades de Trazabilidad</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Event Log:</strong> Registro completo de eventos del sistema ordenados por timestamp</li>
+                            <li><strong>Trace Mode:</strong> Captura de secuencia de comandos y respuestas</li>
+                            <li><strong>Data Flow:</strong> Visualización del flujo de datos entre dispositivos</li>
+                            <li><strong>Protocol Analyzer:</strong> Análisis de mensajes de protocolo detallado</li>
+                            <li><strong>Performance Monitor:</strong> Monitoreo de latencia y rendimiento</li>
+                            <li><strong>Audit Trail:</strong> Auditoría de acciones de usuarios y cambios de configuración</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Ventajas para CFE</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Diseñado específicamente para la industria eléctrica mexicana</li>
+                            <li>Cumple con normas y estándares de CFE</li>
+                            <li>Soporte técnico local y actualizaciones regulares</li>
+                            <li>Integración con infraestructura existente de CFE</li>
+                            <li>Optimizado para operaciones a gran escala</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Acceso y Contacto</h4>
+                        <p style="color: #666; line-height: 1.6;"><strong>CFE Tools</strong> es una herramienta propietaria distribuida directamente por la CFE. Para acceso, instalación o soporte técnico, contacta a tu administrador de sistemas o al departamento de Tecnología de la Información de tu centro de control.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- DEFINICIONES MODAL -->
     <div id="definicionesModal" class="modal">
@@ -1056,6 +1198,15 @@
             document.getElementById('definicionesModal').classList.remove('active');
         }
 
+        // Trazabilidad de Señales Modal
+        function openTrazabilidadModal() {
+            document.getElementById('trazabilidadModal').classList.add('active');
+        }
+
+        function closeTrazabilidadModal() {
+            document.getElementById('trazabilidadModal').classList.remove('active');
+        }
+
         // PDF Viewer
         function openPdfViewer(pdfUrl, pdfName) {
             const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
@@ -1075,6 +1226,7 @@
                 closeDocumentacionModal();
                 closeComunicacionesModal();
                 closeDefinicionesModal();
+                closeTrazabilidadModal();
                 closePdfViewer();
             }
         });
@@ -1095,6 +1247,12 @@
         document.getElementById('definicionesModal').addEventListener('click', function(event) {
             if (event.target === this) {
                 closeDefinicionesModal();
+            }
+        });
+
+        document.getElementById('trazabilidadModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeTrazabilidadModal();
             }
         });
 
