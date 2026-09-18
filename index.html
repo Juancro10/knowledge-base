@@ -251,6 +251,46 @@
             color: #17a2b8;
         }
 
+        /* PDF VIEWER SECTION */
+        .pdf-viewer-section {
+            padding: 70px 60px;
+            background-color: white;
+        }
+
+        .pdf-viewer-section h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .pdf-viewer-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 600px;
+        }
+
+        .pdf-viewer-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .pdf-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #17a2b8;
+            border-radius: 4px;
+        }
+
+        .pdf-info p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 1200px) {
             .modules-grid {
@@ -335,6 +375,18 @@
                 <span>·</span>
                 <span>Actualizado 18/9/2026</span>
             </div>
+        </div>
+    </section>
+
+    <!-- PDF VIEWER SECTION -->
+    <section class="pdf-viewer-section">
+        <h3>📄 Documentación Técnica - ICCP Protocol</h3>
+        <div class="pdf-viewer-container">
+            <iframe src="https://docs.google.com/gview?url=https://github.com/Juancro10/knowledge-base/raw/main/RG-ICCP-EN.pdf&embedded=true"></iframe>
+        </div>
+        <div class="pdf-info">
+            <p><strong>Documento:</strong> RG-ICCP-EN.pdf - Reference Guide ICCP Protocol v5.30</p>
+            <p><strong>Tamaño:</strong> Haz scroll para ver el documento completo</p>
         </div>
     </section>
 
