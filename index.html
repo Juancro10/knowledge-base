@@ -719,24 +719,81 @@
                 <div>
                     <h3 class="subcategory-title">DNP3 - Distributed Network Protocol</h3>
                     <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
-                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">Descripción General</h4>
-                        <p style="color: #666; line-height: 1.6;">DNP3 es un protocolo de comunicación estándar desarrollado para sistemas SCADA en servicios públicos. Es ampliamente utilizado en la industria eléctrica, agua y gas para la comunicación entre equipos de telecontrol y unidades remotas.</p>
-                        
-                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Características Principales</h4>
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">Introducción</h4>
+                        <p style="color: #666; line-height: 1.6;">DNP3 (Distributed Network Protocol versión 3.0) fue desarrollado para alcanzar interoperabilidad abierta y estándar entre elementos de subestaciones y estaciones principales de compañías eléctricas. Desarrollado por Harris en noviembre de 1993 y entregado al Grupo de Usuarios de DNP3 (conformado por más de 300 usuarios y fabricantes), se ha expandido ampliamente a industrias como agua, tratamiento de aguas residuales, petróleo y gas.</p>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Ventajas de DNP3</h4>
                         <ul style="color: #666; line-height: 1.8;">
-                            <li>Protocolo robusto diseñado para comunicaciones confiables</li>
-                            <li>Soporte para múltiples tipos de datos (analógicos, digitales, contadores)</li>
-                            <li>Funciones de reporting y evento disparado</li>
-                            <li>Autenticación y encriptación de seguridad (DNP3 Secure Authentication)</li>
-                            <li>Compatible con múltiples medios de transmisión (serie, Ethernet, IP)</li>
+                            <li>Flexibilidad y funcionalidades superiores a protocolos convencionales</li>
+                            <li>Opciones de salidas y transferencia de archivos</li>
+                            <li>Direccionamiento sobre 65,000 dispositivos en un enlace simple</li>
+                            <li>Sincronización y eventos con estampa de tiempos</li>
+                            <li>Confirmación de enlace de datos y alto nivel de integridad</li>
                         </ul>
 
-                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Aplicaciones</h4>
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Características Técnicas Principales</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Los mensajes se separan en varias tramas para proporcionar control óptimo de error y secuencias rápidas</li>
+                            <li>Topología igual-igual, maestro-esclavo y múltiples maestros</li>
+                            <li>Solicitudes y respuestas con múltiples tipos de datos en un solo mensaje</li>
+                            <li>Comunicación de excepciones/eventos sin encuestas (Respuestas no solicitadas)</li>
+                            <li>Mensajes en Broadcast para todas las estaciones esclavas</li>
+                            <li>Transferencia segura de configuración y archivos</li>
+                            <li>Confirmaciones en Capa de Enlace y Capa de Aplicación</li>
+                            <li>Asignación de prioridades a grupos de datos (clases)</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Modelo de Capas</h4>
+                        <p style="color: #666; line-height: 1.6;">DNP3 utiliza un modelo simplificado que se asemeja al protocolo OSI de 7 capas, pero omite algunas funciones de nivel superior. Sigue el modelo EPA (definido por IEC) con 3 capas principales:</p>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Capa Física:</strong> Base del modelo</li>
+                            <li><strong>Capas intermedias:</strong> Control y transferencia de datos</li>
+                            <li><strong>Capa de Aplicación:</strong> Funciones de nivel superior</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Estructura de Mensajes</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Fragmentos (Capa de Aplicación):</strong> Tamaño máximo de 1024 bytes</li>
+                            <li><strong>Segmentos (Capa de Transporte):</strong> Permiten transmisión de bloques largos</li>
+                            <li><strong>Tramas (Capa de Enlace):</strong> Tamaño máximo de 292 bytes</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Nivel de Enlace (Link Layer)</h4>
+                        <p style="color: #666; line-height: 1.6;">Una trama DNP3 consta de tres bloques diferenciados:</p>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Cabecera DNP3 (10 bytes):</strong> Incluye bytes de inicio (0x05, 0x64), tamaño de trama, código de control, direcciones de destino y origen (2 bytes cada una en big-endian), y 2 bytes de CRC</li>
+                            <li><strong>Datos:</strong> Cada 16 bytes de datos más al final de la trama hay 2 bytes de CRC</li>
+                            <li><strong>Verificación de Redundancia Cíclica (CRC):</strong> Para detección de errores, basado en especificaciones IEC 60870-5</li>
+                        </ul>
+                        <p style="color: #666; line-height: 1.6;">El nivel de enlace es balanceado, donde tanto la estación controladora como la controlada tienen responsabilidad en envío de datos y gestión del enlace.</p>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Capa de Transporte (Pseudo Transporte)</h4>
+                        <p style="color: #666; line-height: 1.6;">Permite la transmisión de datos en bloques largos. Utiliza bits FIR (First Frame) y FIN (Final Frame) para controlar la secuencia de tramas (0-63). Reglas importantes:</p>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Si se recibe una trama con FIR, cualquier secuencia incompleta es descartada</li>
+                            <li>Sin FIR y sin secuencia en progreso, la trama es ignorada</li>
+                            <li>El número de secuencia debe incrementarse después de la trama inicial</li>
+                            <li>El rango de secuencia es 0 a 63</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Capa de Aplicación</h4>
+                        <p style="color: #666; line-height: 1.6;">La capa de aplicación responde a mensajes completos recibidos. Cuando los datos son demasiado grandes, se construyen múltiples mensajes y se transmiten secuencialmente. Proporciona:</p>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li><strong>Control de Aplicación:</strong> Las confirmaciones indican recepción y análisis sin error</li>
+                            <li><strong>Función de Aplicación:</strong> Código que indica el propósito/operación solicitada del mensaje</li>
+                            <li><strong>Indicaciones Internas:</strong> Conocer el estado del equipo remoto (2 bytes en dispositivos esclavos)</li>
+                            <li><strong>Grupos y Variaciones:</strong> Identifican el tipo de dato del objeto</li>
+                            <li><strong>Estructura de la Información:</strong> Organización de datos (rangos secuenciales o listados no consecutivos)</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Aplicaciones Prácticas</h4>
                         <ul style="color: #666; line-height: 1.8;">
                             <li>Sistemas SCADA en subestaciones eléctricas</li>
                             <li>Control remoto en sistemas de distribución</li>
                             <li>Comunicación con RTU (Remote Terminal Units)</li>
                             <li>Integración de sistemas de control distribuidos</li>
+                            <li>Sistemas de monitoreo en plantas de tratamiento de agua</li>
+                            <li>Comunicación en sistemas de petróleo y gas</li>
                         </ul>
                     </div>
                 </div>
