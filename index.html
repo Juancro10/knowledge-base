@@ -609,7 +609,7 @@
             </div>
 
             <!-- Comunicaciones -->
-            <div class="module-card">
+            <div class="module-card" onclick="openComunicacionesModal()">
                 <div class="module-icon">
                     <svg viewBox="0 0 24 24">
                         <circle cx="6" cy="12" r="2"/>
@@ -707,6 +707,71 @@
         </div>
     </div>
 
+    <!-- COMUNICACIONES MODAL -->
+    <div id="comunicacionesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Comunicaciones</h2>
+                <button class="close-modal" onclick="closeComunicacionesModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- DNP3 -->
+                <div>
+                    <h3 class="subcategory-title">DNP3 - Distributed Network Protocol</h3>
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; margin-bottom: 30px;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">Descripción General</h4>
+                        <p style="color: #666; line-height: 1.6;">DNP3 es un protocolo de comunicación estándar desarrollado para sistemas SCADA en servicios públicos. Es ampliamente utilizado en la industria eléctrica, agua y gas para la comunicación entre equipos de telecontrol y unidades remotas.</p>
+                        
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Características Principales</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Protocolo robusto diseñado para comunicaciones confiables</li>
+                            <li>Soporte para múltiples tipos de datos (analógicos, digitales, contadores)</li>
+                            <li>Funciones de reporting y evento disparado</li>
+                            <li>Autenticación y encriptación de seguridad (DNP3 Secure Authentication)</li>
+                            <li>Compatible con múltiples medios de transmisión (serie, Ethernet, IP)</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Aplicaciones</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Sistemas SCADA en subestaciones eléctricas</li>
+                            <li>Control remoto en sistemas de distribución</li>
+                            <li>Comunicación con RTU (Remote Terminal Units)</li>
+                            <li>Integración de sistemas de control distribuidos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- IEC 104 -->
+                <div>
+                    <h3 class="subcategory-title">IEC 60870-5-104 (IEC 104)</h3>
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0;">Descripción General</h4>
+                        <p style="color: #666; line-height: 1.6;">IEC 60870-5-104 es un estándar internacional para comunicación cliente-servidor en sistemas de automatización y control de energía. Utiliza una arquitectura basada en TCP/IP que permite la comunicación por redes estándar.</p>
+                        
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Características Principales</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Basado en estándar IEC 60870-5-101 pero sobre TCP/IP</li>
+                            <li>Comunicación orientada a conexión</li>
+                            <li>Multiplexación de canales ASDU (Application Service Data Units)</li>
+                            <li>Supervisión de conexión con mecanismos de keepalive</li>
+                            <li>Soporte para tiempo de sincronización</li>
+                            <li>Integración en sistemas Ethernet y redes modernas</li>
+                        </ul>
+
+                        <h4 style="color: #333; font-weight: 700; margin-top: 20px;">Aplicaciones</h4>
+                        <ul style="color: #666; line-height: 1.8;">
+                            <li>Comunicación entre SCADA y subestaciones</li>
+                            <li>Sistemas de control remoto en redes eléctricas</li>
+                            <li>Monitoreo y control de plantas de distribución</li>
+                            <li>Sistemas de protección y automatización</li>
+                            <li>Integración con infraestructura IT moderna</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- PDF VIEWER MODAL -->
     <div id="pdfViewerModal" class="pdf-viewer-modal">
         <div class="pdf-viewer-content">
@@ -730,6 +795,15 @@
             document.getElementById('documentacionModal').classList.remove('active');
         }
 
+        // Comunicaciones Modal
+        function openComunicacionesModal() {
+            document.getElementById('comunicacionesModal').classList.add('active');
+        }
+
+        function closeComunicacionesModal() {
+            document.getElementById('comunicacionesModal').classList.remove('active');
+        }
+
         // PDF Viewer
         function openPdfViewer(pdfUrl, pdfName) {
             const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
@@ -747,6 +821,7 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeDocumentacionModal();
+                closeComunicacionesModal();
                 closePdfViewer();
             }
         });
@@ -755,6 +830,12 @@
         document.getElementById('documentacionModal').addEventListener('click', function(event) {
             if (event.target === this) {
                 closeDocumentacionModal();
+            }
+        });
+
+        document.getElementById('comunicacionesModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeComunicacionesModal();
             }
         });
 
