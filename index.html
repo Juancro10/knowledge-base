@@ -251,6 +251,193 @@
             color: #17a2b8;
         }
 
+        /* MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            margin: 0;
+            color: #333;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .subcategory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .subcategory-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #17a2b8;
+        }
+
+        .pdf-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #17a2b8;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pdf-card:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .pdf-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .pdf-card p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+
+        /* PDF VIEWER MODAL */
+        .pdf-viewer-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdf-viewer-modal.active {
+            display: flex;
+        }
+
+        .pdf-viewer-content {
+            background-color: white;
+            width: 95%;
+            max-width: 1400px;
+            height: 90vh;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .pdf-viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .pdf-viewer-header h2 {
+            font-size: 18px;
+            margin: 0;
+            color: #333;
+        }
+
+        .close-pdf-viewer {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-pdf-viewer:hover {
+            color: #333;
+        }
+
+        .pdf-viewer-body {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .pdf-viewer-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 1200px) {
             .modules-grid {
@@ -334,107 +521,6 @@
                 <span>9 categorías</span>
                 <span>·</span>
                 <span>Actualizado 18/9/2026</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- DOCUMENTACION SIEMENS SECTION -->
-    <section class="modules-section" style="background-color: white;">
-        <h3>📚 Documentación Siemens</h3>
-        
-        <!-- REFERENCE GUIDES -->
-        <div style="margin-bottom: 40px;">
-            <h4 style="font-size: 18px; font-weight: 700; color: #333; margin-bottom: 20px; padding-left: 60px;">📁 Reference Guides</h4>
-            <div class="modules-grid">
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>RG-ICCP-EN</h4>
-                    <p>ICCP Protocol Reference Guide</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-ICCP-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
-
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>RG-CFE-EN</h4>
-                    <p>CFE Configuration Reference Guide</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-CFE-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
-
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>RG-IMM-EN</h4>
-                    <p>Information Model Management Guide</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-IMM-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
-
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>RG-UIOS-EN</h4>
-                    <p>User Interface & OS Reference</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-UIOS-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
-
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>RG-IMM-GE-EN</h4>
-                    <p>IMM General Edition Reference</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-IMM-GE-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TECHNICAL SPECS -->
-        <div>
-            <h4 style="font-size: 18px; font-weight: 700; color: #333; margin-bottom: 20px; padding-left: 60px;">📁 Technical Specifications</h4>
-            <div class="modules-grid">
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>TS-ICCP-EN</h4>
-                    <p>ICCP Protocol Technical Specification</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Technical-Specs/TS-ICCP-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
-
-                <div class="module-card">
-                    <div class="module-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
-                            <polyline points="13 2 13 9 20 9"/>
-                        </svg>
-                    </div>
-                    <h4>TS-CFE-EN</h4>
-                    <p>CFE Technical Specification</p>
-                    <div class="module-docs"><a href="https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Technical-Specs/TS-CFE-EN.pdf" target="_blank" style="color: #17a2b8; text-decoration: none;">📥 Ver/Descargar</a></div>
-                </div>
             </div>
         </div>
     </section>
@@ -550,7 +636,133 @@
                 <p>Recursos educativos y capacitación de usuarios.</p>
                 <div class="module-docs">6 documentos</div>
             </div>
+
+            <!-- Documentación Siemens -->
+            <div class="module-card" onclick="openDocumentacionModal()">
+                <div class="module-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="12" y1="13" x2="8" y2="13"/>
+                        <line x1="12" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h4>Documentación Siemens</h4>
+                <p>Guías técnicas y especificaciones.</p>
+                <div class="module-docs">7 documentos</div>
+            </div>
         </div>
     </section>
+
+    <!-- DOCUMENTACION MODAL -->
+    <div id="documentacionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📚 Documentación Siemens</h2>
+                <button class="close-modal" onclick="closeDocumentacionModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Reference Guides -->
+                <div>
+                    <h3 class="subcategory-title">📁 Reference Guides</h3>
+                    <div class="subcategory-grid">
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-ICCP-EN.pdf', 'RG-ICCP-EN')">
+                            <h4>RG-ICCP-EN</h4>
+                            <p>ICCP Protocol Reference Guide</p>
+                        </div>
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-CFE-EN.pdf', 'RG-CFE-EN')">
+                            <h4>RG-CFE-EN</h4>
+                            <p>CFE Configuration Reference Guide</p>
+                        </div>
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-IMM-EN.pdf', 'RG-IMM-EN')">
+                            <h4>RG-IMM-EN</h4>
+                            <p>Information Model Management Guide</p>
+                        </div>
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-UIOS-EN.pdf', 'RG-UIOS-EN')">
+                            <h4>RG-UIOS-EN</h4>
+                            <p>User Interface & OS Reference</p>
+                        </div>
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Reference-Guides/RG-IMM-GE-EN.pdf', 'RG-IMM-GE-EN')">
+                            <h4>RG-IMM-GE-EN</h4>
+                            <p>IMM General Edition Reference</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Specs -->
+                <div style="margin-top: 40px;">
+                    <h3 class="subcategory-title">📁 Technical Specifications</h3>
+                    <div class="subcategory-grid">
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Technical-Specs/TS-ICCP-EN.pdf', 'TS-ICCP-EN')">
+                            <h4>TS-ICCP-EN</h4>
+                            <p>ICCP Protocol Technical Specification</p>
+                        </div>
+                        <div class="pdf-card" onclick="openPdfViewer('https://github.com/Juancro10/knowledge-base/raw/main/Siemens/Technical-Specs/TS-CFE-EN.pdf', 'TS-CFE-EN')">
+                            <h4>TS-CFE-EN</h4>
+                            <p>CFE Technical Specification</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF VIEWER MODAL -->
+    <div id="pdfViewerModal" class="pdf-viewer-modal">
+        <div class="pdf-viewer-content">
+            <div class="pdf-viewer-header">
+                <h2 id="pdfTitle">Documento</h2>
+                <button class="close-pdf-viewer" onclick="closePdfViewer()">&times;</button>
+            </div>
+            <div class="pdf-viewer-body">
+                <iframe id="pdfFrame"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Documentación Modal
+        function openDocumentacionModal() {
+            document.getElementById('documentacionModal').classList.add('active');
+        }
+
+        function closeDocumentacionModal() {
+            document.getElementById('documentacionModal').classList.remove('active');
+        }
+
+        // PDF Viewer
+        function openPdfViewer(pdfUrl, pdfName) {
+            const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
+            document.getElementById('pdfTitle').textContent = pdfName;
+            document.getElementById('pdfFrame').src = viewerUrl;
+            document.getElementById('pdfViewerModal').classList.add('active');
+        }
+
+        function closePdfViewer() {
+            document.getElementById('pdfViewerModal').classList.remove('active');
+            document.getElementById('pdfFrame').src = '';
+        }
+
+        // Cerrar modales con ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDocumentacionModal();
+                closePdfViewer();
+            }
+        });
+
+        // Cerrar modales al hacer click afuera
+        document.getElementById('documentacionModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeDocumentacionModal();
+            }
+        });
+
+        document.getElementById('pdfViewerModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closePdfViewer();
+            }
+        });
+    </script>
 </body>
 </html>
