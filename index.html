@@ -637,8 +637,19 @@
                 <div class="module-docs">6 documentos</div>
             </div>
 
-            <!-- Documentación Siemens -->
-            <div class="module-card" onclick="openDocumentacionModal()">
+            <!-- Definiciones -->
+            <div class="module-card" onclick="openDefinicionesModal()">
+                <div class="module-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 19h16v2H4z"/>
+                        <path d="M5 3h14c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z"/>
+                        <path d="M7 10h10M7 6h10M7 14h4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+                <h4>Definiciones</h4>
+                <p>Glosario de términos técnicos y conceptos.</p>
+                <div class="module-docs">10 términos</div>
+            </div>
                 <div class="module-icon">
                     <svg viewBox="0 0 24 24">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -653,6 +664,82 @@
             </div>
         </div>
     </section>
+
+    <!-- DEFINICIONES MODAL -->
+    <div id="definicionesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Definiciones - Glosario de Términos Técnicos</h2>
+                <button class="close-modal" onclick="closeDefinicionesModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <!-- Telemetría -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">Telemetría</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Tecnología para recopilar datos de dispositivos o sistemas remotos y transmitirlos a un sistema de control central. Los datos se recopilan típicamente de sensores o equipos de monitoreo, como temperatura, presión o ubicación.</p>
+                        <p style="color: #666; font-size: 13px;"><strong>Ejemplo:</strong> Una sonda espacial que transmite datos de velocidad, temperatura y posición a la Tierra es un ejemplo de telemetría.</p>
+                    </div>
+
+                    <!-- Teleseñalización -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">Teleseñalización / Señalización Remota</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Transmisión de señales de estado o alarma desde equipos remotos, generalmente como datos discretos (ej. ENCENDIDO/APAGADO, Normal/Fallo).</p>
+                        <p style="color: #666; font-size: 13px;"><strong>Ejemplo:</strong> Un centro de control de planta recibiendo una señal de "interruptor cerrado" desde una subestación es una instancia de señalización remota.</p>
+                    </div>
+
+                    <!-- Telecontrol -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">Telecontrol / Control Remoto</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Operación u control remoto de dispositivos, como encender/apagar equipos, configurar parámetros o iniciar procesos.</p>
+                        <p style="color: #666; font-size: 13px;"><strong>Ejemplo:</strong> Iniciar remotamente una máquina de fábrica o encender un aire acondicionado es una forma de telecontrol.</p>
+                    </div>
+
+                    <!-- DSP -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">DSP - Procesador Digital de Señales</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Microprocesador especializado diseñado para procesamiento numérico de alta velocidad, ampliamente utilizado en telecomunicaciones, audio, procesamiento de imágenes digitales, radar, sonar y electrónica de consumidor.</p>
+                    </div>
+
+                    <!-- RTU -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">RTU - Unidad Terminal Remota</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Dispositivo electrónico basado en microprocesador que actúa como interfaz con dispositivos de campo y transmite datos de telemetría al sistema SCADA, mientras que también recibe comandos de control.</p>
+                    </div>
+
+                    <!-- IED -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">IED - Dispositivo Electrónico Inteligente</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Dispositivo electrónico avanzado capaz de procesamiento de datos y comunicación, utilizado en sistemas de potencia y control industrial para monitoreo, control, protección y comunicación. Va más allá de sensores o relés simples al incorporar microprocesadores e interfaces de comunicación.</p>
+                    </div>
+
+                    <!-- COT -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">COT - Causa de Transmisión</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Campo crítico dentro de la ASDU (Unidad de Datos del Servicio de Aplicación) en IEC 60870-5, que indica la razón de la transmisión de datos (ej. cíclica, espontánea, prueba).</p>
+                    </div>
+
+                    <!-- IOA -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">IOA - Dirección del Objeto de Información</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Identifica la dirección interna de un punto específico dentro de un dispositivo. Cada RTU o IED típicamente tiene una lista de puntos, y la IOA se utiliza para hacer referencia a esos puntos.</p>
+                    </div>
+
+                    <!-- Trama -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">Trama</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Unidad básica de encapsulación de datos en protocolos de comunicación industrial, consistente en un encabezado (Inicio de Trama, dirección, código de función), carga útil y CRC (verificación de error).</p>
+                    </div>
+
+                    <!-- SCADA -->
+                    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                        <h4 style="color: #333; font-weight: 700; margin-top: 0; margin-bottom: 10px;">SCADA - Supervisión, Control y Adquisición de Datos</h4>
+                        <p style="color: #666; font-size: 14px; margin-bottom: 10px;"><strong>Definición:</strong> Arquitectura de sistema utilizada para monitoreo y control remoto de grandes sistemas industriales. Los sistemas SCADA permiten a operadores centralizados supervisar dispositivos de campo, enviar comandos de control y visualizar/analizar datos en tiempo real.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- DOCUMENTACION MODAL -->
     <div id="documentacionModal" class="modal">
@@ -867,6 +954,15 @@
             document.getElementById('comunicacionesModal').classList.remove('active');
         }
 
+        // Definiciones Modal
+        function openDefinicionesModal() {
+            document.getElementById('definicionesModal').classList.add('active');
+        }
+
+        function closeDefinicionesModal() {
+            document.getElementById('definicionesModal').classList.remove('active');
+        }
+
         // PDF Viewer
         function openPdfViewer(pdfUrl, pdfName) {
             const viewerUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
@@ -885,6 +981,7 @@
             if (event.key === 'Escape') {
                 closeDocumentacionModal();
                 closeComunicacionesModal();
+                closeDefinicionesModal();
                 closePdfViewer();
             }
         });
@@ -899,6 +996,12 @@
         document.getElementById('comunicacionesModal').addEventListener('click', function(event) {
             if (event.target === this) {
                 closeComunicacionesModal();
+            }
+        });
+
+        document.getElementById('definicionesModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeDefinicionesModal();
             }
         });
 
